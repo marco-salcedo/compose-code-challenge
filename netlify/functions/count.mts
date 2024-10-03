@@ -15,7 +15,10 @@ export default async (req: Request, context: Context) => {
   if (method === 'GET') {
     return new Response(count.toString());
   } else if (method === 'POST') {
-    count = count + 99999999999;
+    const incrementTimes = 999999; // Adjust this number as needed
+    for (let i = 0; i < incrementTimes; i++) {
+      count++;
+    }
     await store.set('count', count.toString());
     return new Response(count.toString());
   }
